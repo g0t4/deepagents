@@ -25,7 +25,11 @@ from deepagents_cli._env_vars import (
     USER_ID,
 )
 from deepagents_cli._version import __version__
-from deepagents_cli.config import _GLOBAL_DOTENV_PATH, settings
+from deepagents_cli.config import (
+    _GLOBAL_DOTENV_PATH,
+    console,
+    settings,
+)
 from deepagents_cli.model_config import (
     DEFAULT_CONFIG_DIR,
     DEFAULT_CONFIG_PATH,
@@ -391,16 +395,16 @@ def _paths_to_dict() -> dict[str, Any]:
 
 def _print_section(title: str) -> None:
     """Print a section header."""
-    print()  # noqa: T201  # config_dump uses print for stdout output
-    print(f"[bold]{title}[/bold]")  # noqa: T201
-    print(f"{'=' * len(title)}")  # noqa: T201
+    console.print()
+    console.print(f"[bold]{title}[/bold]")
+    console.print(f"{'=' * len(title)}")
 
 
 def _print_section_header(title: str) -> None:
     """Print a subsection header."""
-    print(f"\n[underline]{title}[/underline]")  # noqa: T201
+    console.print(f"\n[underline]{title}[/underline]")
 
 
 def _print_kv(key: str, value: object) -> None:
     """Print a key-value pair in a compact column format."""
-    print(f"  {key:35s} {value}")  # noqa: T201
+    console.print(f"  {key:35s} {value}")
