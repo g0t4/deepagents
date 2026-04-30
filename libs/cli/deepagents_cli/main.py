@@ -596,6 +596,14 @@ def parse_args() -> argparse.Namespace:
     )
     add_json_output_arg(update_parser)
 
+    config_parser = subparsers.add_parser(
+        "config",
+        help="Dump the effective deepagents-cli configuration",
+        add_help=False,
+        parents=help_parent(_lazy_help("show_config_help")),
+    )
+    add_json_output_arg(config_parser)
+
     # Default interactive mode — argument order here determines the
     # usage line printed by argparse; keep in sync with ui.show_help().
     parser.add_argument(
@@ -1776,6 +1784,10 @@ def cli_main() -> None:
             from deepagents_cli.deploy import execute_deploy_command
 
             execute_deploy_command(args)
+       elif args.command == "config":
+            from deepagents_cli.config_dump import dump_config
+
+            dump_config(output_format=output_format)
         elif args.command == "mcp":
             from deepagents_cli.mcp_commands import run_mcp_login
             from deepagents_cli.ui import show_mcp_help

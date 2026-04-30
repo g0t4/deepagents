@@ -86,6 +86,9 @@ def show_help() -> None:
     )
     console.print("  deepagents mcp <login>                         Manage MCP servers")
     console.print(
+        "  deepagents config                              Dump the effective config"
+    )
+    console.print(
         "  deepagents update                              Check for and install updates"
     )
     console.print()
@@ -382,6 +385,30 @@ def show_skills_delete_help() -> None:
     console.print("  deepagents skills delete old-skill --force")
     console.print("  deepagents skills delete old-skill --project")
     console.print("  deepagents skills delete old-skill --dry-run")
+    console.print()
+
+
+def show_config_help() -> None:
+    """Show help information for the `config` subcommand."""
+    console.print()
+    console.print("[bold]Usage:[/bold]", style=theme.PRIMARY)
+    console.print("  deepagents config [options]")
+    console.print()
+    console.print(
+        "Dump the effective deepagents-cli configuration.\n",
+    )
+    console.print(
+        "Reads config.toml, environment variables, and runtime settings,\n",
+    )
+    console.print(
+        "then renders them as human-readable text or JSON (with --json).\n",
+    )
+    console.print()
+    _print_option_section()
+    console.print()
+    console.print("[bold]Examples:[/bold]", style=theme.PRIMARY)
+    console.print("  deepagents config")
+    console.print("  deepagents config --json")
     console.print()
 
 
